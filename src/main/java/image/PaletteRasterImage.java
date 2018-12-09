@@ -37,7 +37,7 @@ public class PaletteRasterImage implements Image {
 
     public void createRepresentation(){
         palette = new ArrayList<>();
-        this.pixels = new int[height][width];
+        this.pixels = new int[width][height];
     }
 
     @Override
@@ -64,6 +64,9 @@ public class PaletteRasterImage implements Image {
     }
 
     public void setPixelColor(Color color, int x, int y){
-
+        if(!palette.contains(color)) {
+            palette.add(color);
+        }        
+        pixels[x][y] = palette.indexOf(color);
     }
 }
