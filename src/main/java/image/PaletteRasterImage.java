@@ -69,4 +69,12 @@ public class PaletteRasterImage implements Image {
         }
         pixels[x][y] = palette.indexOf(color);
     }
+
+    public void setPixelsColor(Color[][] pixels){
+        for(int x=0; x < pixels.length; x++){
+            for(int y=0; y < pixels[0].length; y++){
+                setPixelColor(pixels[x][y], x, y);
+            }
+        }
+    }
 }
