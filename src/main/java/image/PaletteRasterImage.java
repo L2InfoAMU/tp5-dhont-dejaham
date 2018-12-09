@@ -7,22 +7,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
 
-public class PaletteRasterImage implements Image {
-    private int height;
-    private int width;
+public class PaletteRasterImage extends RasterImage {
     private List<Color> palette;
     private int[][] pixels;
 
     public PaletteRasterImage(Color color, int width, int height){
-        this.height = height;
-        this.width = width;
+        super(width, height);
         this.createRepresentation();
         palette.add(color);
     }
 
     public PaletteRasterImage(Color[][] pixels){
-        this.height = pixels[0].length;
-        this.width = pixels.length;
+        super(pixels.length, pixels[0].length);
         createRepresentation();
 
         for(int x=0; x< width; x++){
@@ -45,16 +41,6 @@ public class PaletteRasterImage implements Image {
         return palette.get(pixels[x][y]);
     }
 
-    @Override
-    public int getWidth() {
-        return width;
-    }
-
-    @Override
-    public int getHeight() {
-        return height;
-    }
-
     protected void setHeight(int height) {
         this.height = height;
         int[][] newpixels = new int[width][height];
@@ -64,6 +50,7 @@ public class PaletteRasterImage implements Image {
                 newpixels[x][y] = pixels[x][y];
             }
         }
+        pixels = newpixels;
     }
 
     protected void setWidth(int width) {
@@ -75,6 +62,7 @@ public class PaletteRasterImage implements Image {
                 newpixels[x][y] = pixels[x][y];
             }
         }
+        pixels = newpixels;
     }
 
     public void setPixelColor(Color color, int x, int y){
