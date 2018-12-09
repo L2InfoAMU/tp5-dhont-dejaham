@@ -67,6 +67,3 @@ public class BruteRasterImage implements Image {
         this.height = height;
     }
 }
-enum RasterImageType{
-    BRUTE
-}
