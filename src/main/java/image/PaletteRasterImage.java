@@ -42,7 +42,7 @@ public class PaletteRasterImage implements Image {
 
     @Override
     public Color getPixelColor(int x, int y) {
-        return null;
+        return palette.get(pixels[x][y]);
     }
 
     @Override
@@ -66,7 +66,7 @@ public class PaletteRasterImage implements Image {
     public void setPixelColor(Color color, int x, int y){
         if(!palette.contains(color)) {
             palette.add(color);
-        }        
+        }
         pixels[x][y] = palette.indexOf(color);
     }
 }
