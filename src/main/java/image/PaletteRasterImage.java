@@ -2,6 +2,8 @@ package image;
 
 
 import javafx.scene.paint.Color;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
 
@@ -22,7 +24,8 @@ public class PaletteRasterImage implements Image {
     }
 
     public void createRepresentation(){
-
+        palette = new ArrayList<>();
+        this.pixels = new int[height][width];
     }
 
     @Override
