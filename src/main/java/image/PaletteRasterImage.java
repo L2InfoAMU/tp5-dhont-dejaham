@@ -8,19 +8,28 @@ import java.util.List;
 import java.util.Arrays;
 
 public class PaletteRasterImage implements Image {
-    int height;
-    int width;
-    List<Color> palette;
-    int[][] pixels;
+    private int height;
+    private int width;
+    private List<Color> palette;
+    private int[][] pixels;
 
     public PaletteRasterImage(Color color, int width, int height){
         this.height = height;
         this.width = width;
-
+        this.createRepresentation();
+        palette.add(color);
     }
 
     public PaletteRasterImage(Color[][] pixels){
-
+        createRepresentation();
+        for(int x=0; x<pixels.length; x++){
+            for(int y=0; y<pixels[0].length; y++){
+                if(!palette.contains(pixels[x][y])){
+                    palette.add(pixels[x][y]);
+                    this.pixels[x][y] = palette.indexOf(pixels[x][y]);
+                }
+            }
+        }
     }
 
     public void createRepresentation(){
