@@ -29,8 +29,8 @@ public class PaletteRasterImage implements Image {
             for(int y=0; y< height; y++){
                 if(!palette.contains(pixels[x][y])){
                     palette.add(pixels[x][y]);
-                    this.pixels[x][y] = palette.indexOf(pixels[x][y]);
-                }
+                    }
+                this.pixels[x][y] = palette.indexOf(pixels[x][y]);
             }
         }
     }
@@ -55,12 +55,26 @@ public class PaletteRasterImage implements Image {
         return height;
     }
 
-    public void setHeight(int height) {
+    protected void setHeight(int height) {
         this.height = height;
+        int[][] newpixels = new int[width][height];
+
+        for(int x = 0; x < width; x++){
+            for(int y = 0; y < height; y++){
+                newpixels[x][y] = pixels[x][y];
+            }
+        }
     }
 
-    public void setWidth(int width) {
+    protected void setWidth(int width) {
         this.width = width;
+        int[][] newpixels = new int[width][height];
+
+        for(int x = 0; x < width; x++){
+            for(int y = 0; y < height; y++){
+                newpixels[x][y] = pixels[x][y];
+            }
+        }
     }
 
     public void setPixelColor(Color color, int x, int y){
@@ -76,5 +90,12 @@ public class PaletteRasterImage implements Image {
                 setPixelColor(pixels[x][y], x, y);
             }
         }
+    }
+
+    private void setPixelsColor(Color color){
+        if(!palette.contains(color))
+            palette.add(color);
+        for(int[] row: pixels)
+            Arrays.fill(row, palette.indexOf(color));
     }
 }
