@@ -22,8 +22,11 @@ public class PaletteRasterImage implements Image {
 
     public PaletteRasterImage(Color[][] pixels){
         createRepresentation();
-        for(int x=0; x<pixels.length; x++){
-            for(int y=0; y<pixels[0].length; y++){
+        this.height = pixels[0].length;
+        this.width = pixels.length;
+
+        for(int x=0; x< width; x++){
+            for(int y=0; y< height; y++){
                 if(!palette.contains(pixels[x][y])){
                     palette.add(pixels[x][y]);
                     this.pixels[x][y] = palette.indexOf(pixels[x][y]);
