@@ -23,4 +23,12 @@ public abstract class RasterImage implements Image{
 
     public abstract Color getPixelColor(int x, int y);
 
+    protected void setHeight(int height) {
+        this.height = height;
+    }
+
+    protected void setWidth(int width) {
+        this.width = width;
+    }
+
 }

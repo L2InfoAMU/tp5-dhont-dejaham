@@ -41,30 +41,6 @@ public class PaletteRasterImage extends RasterImage {
         return palette.get(pixels[x][y]);
     }
 
-    protected void setHeight(int height) {
-        this.height = height;
-        int[][] newpixels = new int[width][height];
-
-        for(int x = 0; x < width; x++){
-            for(int y = 0; y < height; y++){
-                newpixels[x][y] = pixels[x][y];
-            }
-        }
-        pixels = newpixels;
-    }
-
-    protected void setWidth(int width) {
-        this.width = width;
-        int[][] newpixels = new int[width][height];
-
-        for(int x = 0; x < width; x++){
-            for(int y = 0; y < height; y++){
-                newpixels[x][y] = pixels[x][y];
-            }
-        }
-        pixels = newpixels;
-    }
-
     public void setPixelColor(Color color, int x, int y){
         if(!palette.contains(color)) {
             palette.add(color);

@@ -26,8 +26,6 @@ public class BruteRasterImage extends RasterImage {
         Matrices.requiresNonNull(colors);
         Matrices.requiresRectangularMatrix(colors);
 
-        this.width = colors.length;
-        this.height = colors[0].length;
         this.pixels = colors.clone();
     }
 
@@ -53,11 +51,4 @@ public class BruteRasterImage extends RasterImage {
             Arrays.fill(row, color);
     }
 
-    protected void setWidth(int width){
-        this.width = width;
-    }
-
-    protected void setHeight(int height){
-        this.height = height;
-    }
 }
